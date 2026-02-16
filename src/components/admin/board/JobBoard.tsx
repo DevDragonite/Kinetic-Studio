@@ -1,18 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { JobColumn } from './JobColumn';
+import { createClient } from '@/utils/supabase/client';
+import { Database } from '@/types/database';
 
-// Mock Data
-type Job = {
-    id: string;
-    vehicle: string;
-    plate: string;
-    status: string;
-    priority: 'Normal' | 'High' | 'Urgent';
-    client: string;
-};
+type Job = Database['public']['Tables']['job_cards']['Row'];
 
 type Column = {
     id: string;
@@ -20,30 +14,58 @@ type Column = {
     jobIds: string[];
 };
 
-const initialJobs: Record<string, Job> = {
-    'job-1': { id: 'job-1', vehicle: 'Toyota Corolla', plate: 'AD452X', status: 'reception', priority: 'Normal', client: 'Carlos Pérez' },
-    'job-2': { id: 'job-2', vehicle: 'JAC T8 Pro', plate: 'AB123CD', status: 'diagnosis', priority: 'High', client: 'Maria Rodriguez' },
-    'job-3': { id: 'job-3', vehicle: 'Ford Explorer', plate: 'XYZ-987', status: 'approval', priority: 'Urgent', client: 'Pedro Mendez' },
-    'job-4': { id: 'job-4', vehicle: 'Chery Tiggo 7', plate: 'EFG-456', status: 'in_progress', priority: 'Normal', client: 'Ana Silva' },
-    'job-5': { id: 'job-5', vehicle: 'Mitsubishi Montero', plate: 'LMN-789', status: 'quality_control', priority: 'Normal', client: 'Luis Gomez' },
-};
-
 const initialColumns: Record<string, Column> = {
-    'reception': { id: 'reception', title: 'Recepción', jobIds: ['job-1'] },
-    'diagnosis': { id: 'diagnosis', title: 'Diagnóstico', jobIds: ['job-2'] },
-    'approval': { id: 'approval', title: 'Aprobación', jobIds: ['job-3'] },
-    'in_progress': { id: 'in_progress', title: 'En Progreso', jobIds: ['job-4'] },
-    'quality_control': { id: 'quality_control', title: 'Control Calidad', jobIds: ['job-5'] },
+    'reception': { id: 'reception', title: 'Recepción', jobIds: [] },
+    'diagnosis': { id: 'diagnosis', title: 'Diagnóstico', jobIds: [] },
+    'approval': { id: 'approval', title: 'Aprobación', jobIds: [] },
+    'in_progress': { id: 'in_progress', title: 'En Progreso', jobIds: [] },
+    'quality_control': { id: 'quality_control', title: 'Control Calidad', jobIds: [] },
     'ready': { id: 'ready', title: 'Listo', jobIds: [] },
 };
 
 const columnOrder = ['reception', 'diagnosis', 'approval', 'in_progress', 'quality_control', 'ready'];
 
 export function JobBoard() {
-    const [jobs, setJobs] = useState(initialJobs);
+    const [jobs, setJobs] = useState<Record<string, Job>>({});
     const [columns, setColumns] = useState(initialColumns);
+    const supabase = createClient();
 
-    const onDragEnd = (result: DropResult) => {
+    useEffect(() => {
+        fetchJobs();
+    }, []);
+
+    const fetchJobs = async () => {
+        const { data, error } = await supabase
+            .from('job_cards')
+            .select('*');
+
+        if (error) {
+            console.error('Error fetching jobs:', error);
+            return;
+        }
+
+        if (data) {
+            const newJobs: Record<string, Job> = {};
+            const newColumns = { ...initialColumns };
+
+            // Reset column jobIds
+            Object.keys(newColumns).forEach(key => {
+                newColumns[key].jobIds = [];
+            });
+
+            data.forEach(job => {
+                newJobs[job.id] = job;
+                if (newColumns[job.status]) {
+                    newColumns[job.status].jobIds.push(job.id);
+                }
+            });
+
+            setJobs(newJobs);
+            setColumns(newColumns);
+        }
+    };
+
+    const onDragEnd = async (result: DropResult) => {
         const { destination, source, draggableId } = result;
 
         if (!destination) return;
@@ -58,25 +80,7 @@ export function JobBoard() {
         const start = columns[source.droppableId];
         const finish = columns[destination.droppableId];
 
-        // Moving within the same column
-        if (start === finish) {
-            const newJobIds = Array.from(start.jobIds);
-            newJobIds.splice(source.index, 1);
-            newJobIds.splice(destination.index, 0, draggableId);
-
-            const newColumn = {
-                ...start,
-                jobIds: newJobIds,
-            };
-
-            setColumns({
-                ...columns,
-                [newColumn.id]: newColumn,
-            });
-            return;
-        }
-
-        // Moving from one column to another
+        // Optimistic Update
         const startJobIds = Array.from(start.jobIds);
         startJobIds.splice(source.index, 1);
         const newStart = {
@@ -97,12 +101,25 @@ export function JobBoard() {
             [newFinish.id]: newFinish,
         });
 
-        // Update job status (mock)
-        const newJob = { ...jobs[draggableId], status: finish.id };
+        const newJob = { ...jobs[draggableId], status: finish.id as Job['status'] };
         setJobs({
             ...jobs,
             [draggableId]: newJob
         });
+
+        // Valid Status Cast
+        const newStatus = finish.id as Database['public']['Tables']['job_cards']['Row']['status'];
+
+        // Persist to Supabase
+        const { error } = await supabase
+            .from('job_cards')
+            .update({ status: newStatus })
+            .eq('id', draggableId);
+
+        if (error) {
+            console.error('Error updating status:', error);
+            // Revert on error (optional implementation)
+        }
     };
 
     return (

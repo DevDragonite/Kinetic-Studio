@@ -2,12 +2,15 @@
 
 import { Droppable } from '@hello-pangea/dnd';
 import { JobCard } from './JobCard';
+import { Database } from '@/types/database';
+
+type Job = Database['public']['Tables']['job_cards']['Row'];
 
 interface JobColumnProps {
     column: {
         id: string;
         title: string;
-        jobs: any[]; // Using any for now to simplify, ideally typed
+        jobs: Job[];
     };
 }
 

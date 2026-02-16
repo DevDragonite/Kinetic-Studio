@@ -3,17 +3,13 @@
 import { Draggable } from '@hello-pangea/dnd';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Clock, AlertCircle } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import { Database } from '@/types/database';
+
+type Job = Database['public']['Tables']['job_cards']['Row'];
 
 interface JobCardProps {
-    job: {
-        id: string;
-        vehicle: string;
-        plate: string;
-        status: string;
-        priority: 'Normal' | 'High' | 'Urgent';
-        client: string;
-    };
+    job: Job;
     index: number;
 }
 
@@ -40,8 +36,10 @@ export function JobCard({ job, index }: JobCardProps) {
                         <CardContent className="p-3 space-y-2">
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h4 className="font-semibold text-white text-sm">{job.vehicle}</h4>
-                                    <p className="text-xs text-slate-400">{job.plate}</p>
+                                    <h4 className="font-semibold text-white text-sm">
+                                        {job.vehicle_brand} {job.vehicle_model}
+                                    </h4>
+                                    <p className="text-xs text-slate-400">{job.license_plate}</p>
                                 </div>
                                 <Badge variant="outline" className={`text-[10px] px-1 py-0 h-5 ${getPriorityColor(job.priority)}`}>
                                     {job.priority}
@@ -54,7 +52,7 @@ export function JobCard({ job, index }: JobCardProps) {
                                     <span>2d ago</span>
                                 </div>
                                 <div className="text-xs text-slate-400 font-medium">
-                                    {job.client.split(' ')[0]}
+                                    {job.client_name.split(' ')[0]}
                                 </div>
                             </div>
                         </CardContent>
