@@ -11,9 +11,10 @@ type Job = Database['public']['Tables']['job_cards']['Row'];
 interface JobCardProps {
     job: Job;
     index: number;
+    onClick: (job: Job) => void;
 }
 
-export function JobCard({ job, index }: JobCardProps) {
+export function JobCard({ job, index, onClick }: JobCardProps) {
     const getPriorityColor = (priority: string) => {
         switch (priority) {
             case 'Urgent': return 'bg-red-500/10 text-red-500 border-red-500/20';
@@ -31,8 +32,9 @@ export function JobCard({ job, index }: JobCardProps) {
                     {...provided.dragHandleProps}
                     className="mb-3"
                     style={{ ...provided.draggableProps.style }}
+                    onClick={() => onClick(job)}
                 >
-                    <Card className={`bg-slate-800 border-slate-700 hover:border-slate-600 transition-colors ${snapshot.isDragging ? 'shadow-xl ring-2 ring-primary border-transparent' : ''}`}>
+                    <Card className={`bg-slate-800 border-slate-700 hover:border-slate-600 transition-colors cursor-pointer ${snapshot.isDragging ? 'shadow-xl ring-2 ring-primary border-transparent' : ''}`}>
                         <CardContent className="p-3 space-y-2">
                             <div className="flex justify-between items-start">
                                 <div>

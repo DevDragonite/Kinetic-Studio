@@ -12,9 +12,10 @@ interface JobColumnProps {
         title: string;
         jobs: Job[];
     };
+    onJobClick: (job: Job) => void;
 }
 
-export function JobColumn({ column }: JobColumnProps) {
+export function JobColumn({ column, onJobClick }: JobColumnProps) {
     return (
         <div className="flex flex-col w-80 shrink-0">
             <div className="flex items-center justify-between mb-3 px-1">
@@ -35,7 +36,7 @@ export function JobColumn({ column }: JobColumnProps) {
                             }`}
                     >
                         {column.jobs.map((job, index) => (
-                            <JobCard key={job.id} job={job} index={index} />
+                            <JobCard key={job.id} job={job} index={index} onClick={onJobClick} />
                         ))}
                         {provided.placeholder}
                     </div>

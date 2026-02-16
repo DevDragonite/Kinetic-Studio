@@ -18,6 +18,8 @@ export interface Database {
                     status: 'reception' | 'diagnosis' | 'approval' | 'in_progress' | 'quality_control' | 'ready' | 'delivered'
                     priority: 'Normal' | 'High' | 'Urgent'
                     client_name: string
+                    before_photos: string[] | null
+                    after_photos: string[] | null
                     created_at: string
                     updated_at: string
                 }
@@ -29,6 +31,8 @@ export interface Database {
                     status?: 'reception' | 'diagnosis' | 'approval' | 'in_progress' | 'quality_control' | 'ready' | 'delivered'
                     priority?: 'Normal' | 'High' | 'Urgent'
                     client_name: string
+                    before_photos?: string[] | null
+                    after_photos?: string[] | null
                     created_at?: string
                     updated_at?: string
                 }
@@ -40,6 +44,8 @@ export interface Database {
                     status?: 'reception' | 'diagnosis' | 'approval' | 'in_progress' | 'quality_control' | 'ready' | 'delivered'
                     priority?: 'Normal' | 'High' | 'Urgent'
                     client_name?: string
+                    before_photos?: string[] | null
+                    after_photos?: string[] | null
                     created_at?: string
                     updated_at?: string
                 }

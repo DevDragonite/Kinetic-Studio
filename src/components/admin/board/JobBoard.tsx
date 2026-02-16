@@ -5,6 +5,7 @@ import { DragDropContext, DropResult } from '@hello-pangea/dnd';
 import { JobColumn } from './JobColumn';
 import { createClient } from '@/utils/supabase/client';
 import { Database } from '@/types/database';
+import { JobDetailSheet } from '../evidence/JobDetailSheet';
 
 type Job = Database['public']['Tables']['job_cards']['Row'];
 
@@ -28,12 +29,13 @@ const columnOrder = ['reception', 'diagnosis', 'approval', 'in_progress', 'quali
 export function JobBoard() {
     const [jobs, setJobs] = useState<Record<string, Job>>({});
     const [columns, setColumns] = useState(initialColumns);
+    const [selectedJob, setSelectedJob] = useState<Job | null>(null);
+    const [isSheetOpen, setIsSheetOpen] = useState(false);
     const supabase = createClient();
 
     useEffect(() => {
         fetchJobs();
 
-        // Realtime Subscription
         const channel = supabase
             .channel('job_board_changes')
             .on(
@@ -44,9 +46,6 @@ export function JobBoard() {
                     table: 'job_cards',
                 },
                 (payload) => {
-                    // Refresh data on any change
-                    // Ideally we would optimistically update based on payload, 
-                    // but refetching ensures consistency for this phase.
                     fetchJobs();
                 }
             )
@@ -60,7 +59,8 @@ export function JobBoard() {
     const fetchJobs = async () => {
         const { data, error } = await supabase
             .from('job_cards')
-            .select('*');
+            .select('*')
+            .order('created_at', { ascending: false });
 
         if (error) {
             console.error('Error fetching jobs:', error);
@@ -85,7 +85,18 @@ export function JobBoard() {
 
             setJobs(newJobs);
             setColumns(newColumns);
+
+            // Update selected job if open
+            if (selectedJob) {
+                const updated = data.find(j => j.id === selectedJob.id);
+                if (updated) setSelectedJob(updated);
+            }
         }
+    };
+
+    const handleJobClick = (job: Job) => {
+        setSelectedJob(job);
+        setIsSheetOpen(true);
     };
 
     const onDragEnd = async (result: DropResult) => {
@@ -103,8 +114,6 @@ export function JobBoard() {
         const start = columns[source.droppableId];
         const finish = columns[destination.droppableId];
 
-        // Optimistic Update (UI behaves instantly)
-        // 1. Remove from start
         const startJobIds = Array.from(start.jobIds);
         startJobIds.splice(source.index, 1);
         const newStart = {
@@ -112,7 +121,6 @@ export function JobBoard() {
             jobIds: startJobIds,
         };
 
-        // 2. Add to finish
         const finishJobIds = Array.from(finish.jobIds);
         finishJobIds.splice(destination.index, 0, draggableId);
         const newFinish = {
@@ -120,24 +128,20 @@ export function JobBoard() {
             jobIds: finishJobIds,
         };
 
-        // 3. Update columns state
         setColumns({
             ...columns,
             [newStart.id]: newStart,
             [newFinish.id]: newFinish,
         });
 
-        // 4. Update job status locally
         const newJob = { ...jobs[draggableId], status: finish.id as Job['status'] };
         setJobs({
             ...jobs,
             [draggableId]: newJob
         });
 
-        // Valid Status Cast
         const newStatus = finish.id as Database['public']['Tables']['job_cards']['Row']['status'];
 
-        // 5. Persist to Supabase
         const { error } = await supabase
             .from('job_cards')
             .update({ status: newStatus })
@@ -145,21 +149,33 @@ export function JobBoard() {
 
         if (error) {
             console.error('Error updating status:', error);
-            // revert logic could go here
-            fetchJobs(); // Fallback to server state
+            fetchJobs();
         }
     };
 
     return (
-        <DragDropContext onDragEnd={onDragEnd}>
-            <div className="flex h-full gap-4 overflow-x-auto pb-4">
-                {columnOrder.map((columnId) => {
-                    const column = columns[columnId];
-                    const columnJobs = column.jobIds.map((jobId) => jobs[jobId]);
+        <>
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div className="flex h-full gap-4 overflow-x-auto pb-4">
+                    {columnOrder.map((columnId) => {
+                        const column = columns[columnId];
+                        const columnJobs = column.jobIds.map((jobId) => jobs[jobId]);
 
-                    return <JobColumn key={column.id} column={{ ...column, jobs: columnJobs }} />;
-                })}
-            </div>
-        </DragDropContext>
+                        return <JobColumn
+                            key={column.id}
+                            column={{ ...column, jobs: columnJobs }}
+                            onJobClick={handleJobClick}
+                        />;
+                    })}
+                </div>
+            </DragDropContext>
+
+            <JobDetailSheet
+                job={selectedJob}
+                isOpen={isSheetOpen}
+                onClose={() => setIsSheetOpen(false)}
+                onUpdate={fetchJobs}
+            />
+        </>
     );
 }
