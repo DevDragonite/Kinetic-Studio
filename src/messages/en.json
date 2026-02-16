@@ -1,0 +1,17 @@
+{
+    "HomePage": {
+        "title": "Kinetic Studio",
+        "subtitle": "Surgical Transparency",
+        "trackPlaceholder": "Enter Plate or VIN",
+        "trackButton": "Track"
+    },
+    "Booking": {
+        "title": "Book Appointment",
+        "steps": {
+            "vehicle": "Vehicle",
+            "service": "Service",
+            "datetime": "Date & Time",
+            "summary": "Confirmation"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "HomePage": {
+        "title": "Kinetic Studio",
+        "subtitle": "Transparencia Quirúrgica",
+        "trackPlaceholder": "Ingresa Placa o VIN",
+        "trackButton": "Rastrear"
+    },
+    "Booking": {
+        "title": "Agenda tu Cita",
+        "steps": {
+            "vehicle": "Vehículo",
+            "service": "Servicio",
+            "datetime": "Fecha y Hora",
+            "summary": "Confirmación"
+        }
+    }
+}

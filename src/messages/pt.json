@@ -1,0 +1,17 @@
+{
+    "HomePage": {
+        "title": "Kinetic Studio",
+        "subtitle": "Transparência Cirúrgica",
+        "trackPlaceholder": "Digite Placa ou VIN",
+        "trackButton": "Rastrear"
+    },
+    "Booking": {
+        "title": "Agendar Consulta",
+        "steps": {
+            "vehicle": "Veículo",
+            "service": "Serviço",
+            "datetime": "Data e Hora",
+            "summary": "Confirmação"
+        }
+    }
+}
