@@ -1,14 +1,20 @@
-import { useTranslations } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
-import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+'use client';
 
-export default async function Home(props: { params: Promise<{ locale: string }> }) {
-  const params = await props.params;
-  const {
-    locale
-  } = params;
-  setRequestLocale(locale);
-  const t = await import(`../../messages/${locale}.json`).then((m) => m.default.HomePage);
+import { useTranslations } from 'next-intl';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { useState } from 'react';
+import { useRouter } from '@/i18n/routing';
+
+export default function Home() {
+  const t = useTranslations('HomePage');
+  const router = useRouter();
+  const [plate, setPlate] = useState('');
+
+  const handleTrack = () => {
+    if (plate.trim()) {
+      router.push(`/track/${plate.trim()}`);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-950 text-white selection:bg-neon-orange selection:text-white">
@@ -36,23 +42,29 @@ export default async function Home(props: { params: Promise<{ locale: string }> 
             Version 1.0 • Caracas, VE
           </div>
           <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-white drop-shadow-2xl">
-            {t.title}
+            {t('title')}
           </h1>
           <p className="text-xl md:text-2xl text-slate-400 font-light tracking-wide max-w-2xl">
-            {t.subtitle}
+            {t('subtitle')}
           </p>
 
-          {/* Tracking Bar Placeholder */}
+          {/* Tracking Bar */}
           <div className="w-full max-w-lg mt-8 group relative">
             <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-neon-orange rounded-full blur opacity-30 group-hover:opacity-75 transition duration-1000"></div>
             <div className="relative w-full bg-slate-900 border border-slate-800 p-2 rounded-full flex shadow-2xl items-center">
               <input
                 type="text"
-                placeholder={t.trackPlaceholder}
-                className="flex-1 bg-transparent border-none text-white px-6 py-3 focus:outline-none placeholder:text-slate-500 font-medium"
+                placeholder={t('trackPlaceholder')}
+                value={plate}
+                onChange={(e) => setPlate(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleTrack()}
+                className="flex-1 bg-transparent border-none text-white px-6 py-3 focus:outline-none placeholder:text-slate-500 font-medium uppercase"
               />
-              <button className="bg-primary hover:bg-primary/90 text-white font-bold rounded-full px-8 py-3 transition-all duration-300 shadow-lg hover:shadow-primary/25">
-                {t.trackButton}
+              <button
+                onClick={handleTrack}
+                className="bg-primary hover:bg-primary/90 text-white font-bold rounded-full px-8 py-3 transition-all duration-300 shadow-lg hover:shadow-primary/25"
+              >
+                {t('trackButton')}
               </button>
             </div>
           </div>

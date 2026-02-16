@@ -32,6 +32,29 @@ export function JobBoard() {
 
     useEffect(() => {
         fetchJobs();
+
+        // Realtime Subscription
+        const channel = supabase
+            .channel('job_board_changes')
+            .on(
+                'postgres_changes',
+                {
+                    event: '*',
+                    schema: 'public',
+                    table: 'job_cards',
+                },
+                (payload) => {
+                    // Refresh data on any change
+                    // Ideally we would optimistically update based on payload, 
+                    // but refetching ensures consistency for this phase.
+                    fetchJobs();
+                }
+            )
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
     }, []);
 
     const fetchJobs = async () => {
@@ -48,9 +71,9 @@ export function JobBoard() {
             const newJobs: Record<string, Job> = {};
             const newColumns = { ...initialColumns };
 
-            // Reset column jobIds
+            // Deep copy to reset jobIds
             Object.keys(newColumns).forEach(key => {
-                newColumns[key].jobIds = [];
+                newColumns[key] = { ...newColumns[key], jobIds: [] };
             });
 
             data.forEach(job => {
@@ -80,7 +103,8 @@ export function JobBoard() {
         const start = columns[source.droppableId];
         const finish = columns[destination.droppableId];
 
-        // Optimistic Update
+        // Optimistic Update (UI behaves instantly)
+        // 1. Remove from start
         const startJobIds = Array.from(start.jobIds);
         startJobIds.splice(source.index, 1);
         const newStart = {
@@ -88,6 +112,7 @@ export function JobBoard() {
             jobIds: startJobIds,
         };
 
+        // 2. Add to finish
         const finishJobIds = Array.from(finish.jobIds);
         finishJobIds.splice(destination.index, 0, draggableId);
         const newFinish = {
@@ -95,12 +120,14 @@ export function JobBoard() {
             jobIds: finishJobIds,
         };
 
+        // 3. Update columns state
         setColumns({
             ...columns,
             [newStart.id]: newStart,
             [newFinish.id]: newFinish,
         });
 
+        // 4. Update job status locally
         const newJob = { ...jobs[draggableId], status: finish.id as Job['status'] };
         setJobs({
             ...jobs,
@@ -110,7 +137,7 @@ export function JobBoard() {
         // Valid Status Cast
         const newStatus = finish.id as Database['public']['Tables']['job_cards']['Row']['status'];
 
-        // Persist to Supabase
+        // 5. Persist to Supabase
         const { error } = await supabase
             .from('job_cards')
             .update({ status: newStatus })
@@ -118,7 +145,8 @@ export function JobBoard() {
 
         if (error) {
             console.error('Error updating status:', error);
-            // Revert on error (optional implementation)
+            // revert logic could go here
+            fetchJobs(); // Fallback to server state
         }
     };
 
