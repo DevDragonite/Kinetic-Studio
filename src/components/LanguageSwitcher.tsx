@@ -33,9 +33,9 @@ export function LanguageSwitcher() {
     }
 
     const languages = {
-        en: { label: 'English', flag: '🇺🇸' },
-        es: { label: 'Español', flag: '🇻🇪' },
-        pt: { label: 'Português', flag: '🇧🇷' }
+        en: { label: 'English', flag: 'https://flagcdn.com/w40/us.png' },
+        es: { label: 'Español', flag: 'https://flagcdn.com/w40/ve.png' },
+        pt: { label: 'Português', flag: 'https://flagcdn.com/w40/br.png' }
     };
 
     return (
@@ -55,7 +55,7 @@ export function LanguageSwitcher() {
                         className={`cursor-pointer hover:bg-slate-800 focus:bg-slate-800 ${locale === key ? 'text-primary font-bold' : ''
                             }`}
                     >
-                        <span className="mr-2 text-lg">{flag}</span>
+                        <img src={flag} alt={label} className="w-5 h-auto mr-3 rounded-sm shadow-sm" />
                         {label}
                     </DropdownMenuItem>
                 ))}
