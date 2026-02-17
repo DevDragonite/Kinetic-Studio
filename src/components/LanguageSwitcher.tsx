@@ -4,6 +4,14 @@ import { usePathname, useRouter } from '@/i18n/routing';
 import { useLocale } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { useTransition } from 'react';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { Globe } from 'lucide-react';
 
 export function LanguageSwitcher() {
     const locale = useLocale();
@@ -24,26 +32,34 @@ export function LanguageSwitcher() {
         });
     }
 
-    const flags = {
-        en: '🇺🇸',
-        es: '🇻🇪',
-        pt: '🇧🇷'
+    const languages = {
+        en: { label: 'English', flag: '🇺🇸' },
+        es: { label: 'Español', flag: '🇻🇪' },
+        pt: { label: 'Português', flag: '🇧🇷' }
     };
 
     return (
-        <div className="flex gap-2">
-            {['es', 'en', 'pt'].map((cur) => (
-                <button
-                    key={cur}
-                    onClick={() => onSelectChange(cur)}
-                    disabled={isPending}
-                    className={`text-xl transition-opacity hover:opacity-100 ${locale === cur ? 'opacity-100 scale-110' : 'opacity-40 grayscale'
-                        }`}
-                    title={cur.toUpperCase()}
-                >
-                    {flags[cur as keyof typeof flags]}
-                </button>
-            ))}
-        </div>
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-slate-300 hover:text-white hover:bg-slate-800">
+                    <Globe className="h-5 w-5" />
+                    <span className="sr-only">Cambiar idioma</span>
+                </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-slate-900 border-slate-800 text-slate-200">
+                {Object.entries(languages).map(([key, { label, flag }]) => (
+                    <DropdownMenuItem
+                        key={key}
+                        onClick={() => onSelectChange(key)}
+                        disabled={isPending}
+                        className={`cursor-pointer hover:bg-slate-800 focus:bg-slate-800 ${locale === key ? 'text-primary font-bold' : ''
+                            }`}
+                    >
+                        <span className="mr-2 text-lg">{flag}</span>
+                        {label}
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
     );
 }

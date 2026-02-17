@@ -32,7 +32,7 @@ export function DateTimeStep({ onNext, onBack }: DateTimeStepProps) {
                         selected={date}
                         onSelect={setDate}
                         className="rounded-md border-none text-white"
-                        disabled={(date) => date < new Date() || date.getDay() === 0 || date.getDay() === 6}
+                        disabled={(date) => date < new Date() || date.getDay() === 0}
                         locale={es}
                     />
                 </div>
