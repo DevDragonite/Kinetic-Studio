@@ -49,19 +49,18 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  /* FORCE DARK THEME AS DEFAULT */
-  --background: oklch(0.16 0.08 260);
+  /* Boutique Night Sky (#102A43) Background */
+  --background: oklch(0.25 0.08 255);
   /* Midnight Sapphire */
   --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.19 0.09 260);
+  --card: oklch(0.25 0.08 255);
   /* Lighter Sapphire */
   --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.19 0.09 260);
+  --popover: oklch(0.25 0.08 255);
   --popover-foreground: oklch(0.984 0.003 247.858);
+  /* Reverted Sunset Orange Primary */
   --primary: oklch(0.62 0.22 45);
-  /* Vibrant Sunset Orange */
-  --primary-foreground: oklch(0.985 0 0);
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.279 0.041 260.031);
   --secondary-foreground: oklch(0.984 0.003 247.858);
   --muted: oklch(0.279 0.041 260.031);
@@ -77,7 +76,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.19 0.09 260);
+  --sidebar: oklch(0.25 0.08 255);
   /* Sapphire Sidebar */
   --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.62 0.22 45);
@@ -87,15 +86,19 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.62 0.22 45);
   --neon-orange: oklch(0.65 0.25 40);
+  --radius: 0.625rem;
 }
 
+/* Dark Mode Theme */
 .dark {
-  --background: oklch(0.16 0.08 260);
+  /* Boutique Dark Slate (#0F172A) Background Base */
+  --background: oklch(0.20 0.06 265);
   --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.19 0.09 260);
+  --card: oklch(0.20 0.06 265);
   --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.19 0.09 260);
+  --popover: oklch(0.20 0.06 265);
   --popover-foreground: oklch(0.984 0.003 247.858);
+  /* Reverted Sunset Orange Primary */
   --primary: oklch(0.62 0.22 45);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.279 0.041 260.031);
@@ -113,7 +116,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.19 0.09 260);
+  --sidebar: oklch(0.20 0.06 265);
   --sidebar-foreground: oklch(0.984 0.003 247.858);
   --sidebar-primary: oklch(0.62 0.22 45);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
@@ -122,6 +125,7 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.62 0.22 45);
   --neon-orange: oklch(0.65 0.25 40);
+  --radius: 0.625rem;
 }
 
 @layer base {
@@ -135,5 +139,41 @@
 
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 50% 0%, #1e40af 0%, #0f172a 50%);
+    background-attachment: fixed;
   }
+}
+
+/* MAP Upgrades: Animations & Utilities */
+@layer utilities {
+  .bg-grid-white {
+    background-size: 40px 40px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+
+  .text-gradient-kinetic {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-orange-400 to-primary;
+    background-size: 200% auto;
+    animation: background-pan 3s linear infinite;
+  }
+
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+}
+
+@keyframes background-pan {
+  0% {
+    background-position: 0%center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.background-animate {
+  background-size: 200% auto;
+  animation: background-pan 3s linear infinite;
 }

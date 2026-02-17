@@ -55,11 +55,11 @@ export function LandingHeader() {
                 </div>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-                    <a href="#servicios" className="hover:text-primary transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">{tNav('services')}</a>
-                    <a href="#marcas" className="hover:text-primary transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">{tNav('brands')}</a>
-                    <a href="#track" className="hover:text-primary transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">{tNav('track')}</a>
-                    <a href="#contacto" className="hover:text-primary transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">{tNav('contact')}</a>
+                <nav className="hidden md:flex items-center gap-8 text-sm font-bold tracking-wide text-primary">
+                    <a href="#servicios" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full">{tNav('services')}</a>
+                    <a href="#marcas" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full">{tNav('brands')}</a>
+                    <a href="#track" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full">{tNav('track')}</a>
+                    <a href="#contacto" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-0.5 after:bg-white after:transition-all hover:after:w-full">{tNav('contact')}</a>
                 </nav>
 
                 <div className="flex items-center gap-4">

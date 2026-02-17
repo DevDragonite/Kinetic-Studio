@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/card';
 import { HeroBackground } from '@/components/landing/HeroBackground';
 import { ServiceCard } from '@/components/landing/ServiceCard';
 import { BrandCard } from '@/components/landing/BrandCard';
+import { TestimonialCard } from '@/components/landing/TestimonialCard';
 import { LandingHeader } from '@/components/layout/LandingHeader';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import {
@@ -96,7 +97,7 @@ export default function Home() {
   const brands = [
     {
       name: 'Toyota',
-      origin: 'Japón 🇯🇵',
+      origin: 'https://flagcdn.com/w40/jp.png',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Toyota_carlogo.svg',
       desc: tBrands('toyota.desc'),
       specialties: tBrands.raw('toyota.specs') as string[],
@@ -105,7 +106,7 @@ export default function Home() {
     },
     {
       name: 'JAC Motors',
-      origin: 'China 🇨🇳',
+      origin: 'https://flagcdn.com/w40/cn.png',
       logo: '/images/logo-jac.jpg',
       desc: tBrands('jac.desc'),
       specialties: tBrands.raw('jac.specs') as string[],
@@ -114,7 +115,7 @@ export default function Home() {
     },
     {
       name: 'Mitsubishi',
-      origin: 'Japón 🇯🇵',
+      origin: 'https://flagcdn.com/w40/jp.png',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Mitsubishi_logo.svg',
       desc: tBrands('mitsubishi.desc'),
       specialties: tBrands.raw('mitsubishi.specs') as string[],
@@ -123,7 +124,7 @@ export default function Home() {
     },
     {
       name: 'Ford',
-      origin: 'USA 🇺🇸',
+      origin: 'https://flagcdn.com/w40/us.png',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg',
       desc: tBrands('ford.desc'),
       specialties: tBrands.raw('ford.specs') as string[],
@@ -135,7 +136,7 @@ export default function Home() {
   const allies = [
     {
       name: 'Bosch',
-      origin: 'Germany 🇩🇪',
+      origin: 'https://flagcdn.com/w40/de.png',
       logo: '/images/Bosch-logo.svg.png',
       desc: tAllies('bosch.desc'),
       specialties: tAllies.raw('bosch.specs') as string[],
@@ -144,7 +145,7 @@ export default function Home() {
     },
     {
       name: 'Motul',
-      origin: 'France 🇫🇷',
+      origin: 'https://flagcdn.com/w40/fr.png',
       logo: '/images/Motul_logo.svg.png',
       desc: tAllies('motul.desc'),
       specialties: tAllies.raw('motul.specs') as string[],
@@ -153,7 +154,7 @@ export default function Home() {
     },
     {
       name: 'Denso',
-      origin: 'Japan 🇯🇵',
+      origin: 'https://flagcdn.com/w40/jp.png',
       logo: '/images/DENSO-main-logo-web.jpg',
       desc: tAllies('denso.desc'),
       specialties: tAllies.raw('denso.specs') as string[],
@@ -162,7 +163,7 @@ export default function Home() {
     },
     {
       name: 'KYB',
-      origin: 'Japan 🇯🇵',
+      origin: 'https://flagcdn.com/w40/jp.png',
       logo: '/images/kyb-logo-500x275.png',
       desc: tAllies('kyb.desc'),
       specialties: tAllies.raw('kyb.specs') as string[],
@@ -187,7 +188,7 @@ export default function Home() {
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 drop-shadow-lg">
             {t.rich('title', {
               br: () => <br />,
-              span: (chunks) => <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-orange-500">{chunks}</span>
+              span: (chunks) => <span className="bg-gradient-to-r from-primary via-orange-400 to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-[background-pan_3s_linear_infinite] font-extrabold">{chunks}</span>
             })}
           </h1>
           <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-md">
@@ -246,7 +247,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{tServices('title')}</h2>
+              <h2 className="text-3xl md:text-4xl font-bold !text-primary mb-4">{tServices('title')}</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">{tServices('subtitle')}</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -326,7 +327,7 @@ export default function Home() {
       {/* ALLIES / SPARE PARTS */}
       <section className="py-20 bg-card/30 border-t border-border">
         <ScrollReveal className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">{tAllies('title')}</h2>
+          <h2 className="text-3xl font-bold !text-primary text-center mb-12">{tAllies('title')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {allies.map((ally, idx) => (
               <BrandCard key={idx} {...ally} imageFit="contain" />
@@ -338,7 +339,7 @@ export default function Home() {
       {/* TESTIMONIALS */}
       <section className="py-20 border-t border-border bg-background">
         <ScrollReveal className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">{tTestimonials('title')}</h2>
+          <h2 className="text-3xl font-bold !text-primary text-center mb-12">{tTestimonials('title')}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
@@ -360,21 +361,11 @@ export default function Home() {
                 image: "/images/harvey.jpg"
               }
             ].map((client, i) => (
-              <Card key={i} className="bg-card border-border p-6 hover:border-primary/30 transition-colors hover:-translate-y-1 duration-300">
-                <div className="flex gap-1 text-yellow-500 mb-4">
-                  {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 fill-current" />)}
-                </div>
-                <p className="text-muted-foreground mb-6 italic">"{client.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border border-border relative">
-                    <img src={client.image} alt={client.name} className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <p className="text-foreground font-bold text-sm">{client.name}</p>
-                    <p className="text-muted-foreground text-xs">{client.car}</p>
-                  </div>
-                </div>
-              </Card>
+              <TestimonialCard
+                key={i}
+                {...client}
+                index={i}
+              />
             ))}
           </div>
         </ScrollReveal>
