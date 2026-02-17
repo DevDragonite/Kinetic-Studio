@@ -1,56 +1,66 @@
+'use client';
+
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, CalendarCheck, DollarSign, Activity } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export default function AdminDashboard() {
+    const t = useTranslations('Admin.dashboard');
+
     return (
         <div className="space-y-8">
             <div>
-                <h2 className="text-3xl font-bold tracking-tight text-white">Dashboard</h2>
-                <p className="text-slate-400">Overview of shop performance and daily activities.</p>
+                <h2 className="text-3xl font-bold tracking-tight text-foreground">{t('title')}</h2>
+                <p className="text-muted-foreground">{t('subtitle')}</p>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card className="bg-slate-900 border-slate-800">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-200">Total Appointments</CardTitle>
-                        <CalendarCheck className="h-4 w-4 text-primary" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold text-white">12</div>
-                        <p className="text-xs text-slate-400">+2 from yesterday</p>
-                    </CardContent>
-                </Card>
+                <Link href="/admin/appointments">
+                    <Card className="bg-card border-border hover:bg-card/80 transition-colors cursor-pointer">
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                            <CardTitle className="text-sm font-medium text-foreground">{t('totalAppointments')}</CardTitle>
+                            <CalendarCheck className="h-4 w-4 text-primary" />
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-2xl font-bold text-foreground">12</div>
+                            <p className="text-xs text-muted-foreground">+2 {t('fromYesterday')}</p>
+                        </CardContent>
+                    </Card>
+                </Link>
 
-                <Card className="bg-slate-900 border-slate-800">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-200">Active Jobs</CardTitle>
-                        <Activity className="h-4 w-4 text-neon-orange" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold text-white">5</div>
-                        <p className="text-xs text-slate-400">3 in progress, 2 waiting</p>
-                    </CardContent>
-                </Card>
+                <Link href="/admin/jobs">
+                    <Card className="bg-card border-border hover:bg-card/80 transition-colors cursor-pointer">
+                        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                            <CardTitle className="text-sm font-medium text-foreground">{t('activeJobs')}</CardTitle>
+                            <Activity className="h-4 w-4 text-neon-orange" />
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-2xl font-bold text-foreground">5</div>
+                            <p className="text-xs text-muted-foreground">3 {t('inProgress')}, 2 {t('waiting')}</p>
+                        </CardContent>
+                    </Card>
+                </Link>
 
-                <Card className="bg-slate-900 border-slate-800">
+                <Card className="bg-card border-border hover:bg-card/80 transition-colors">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-200">Weekly Revenue</CardTitle>
+                        <CardTitle className="text-sm font-medium text-foreground">{t('weeklyRevenue')}</CardTitle>
                         <DollarSign className="h-4 w-4 text-emerald-500" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-white">$2,450</div>
-                        <p className="text-xs text-slate-400">+15% from last week</p>
+                        <div className="text-2xl font-bold text-foreground">$2,450</div>
+                        <p className="text-xs text-muted-foreground">+15% {t('fromLastWeek')}</p>
                     </CardContent>
                 </Card>
 
-                <Card className="bg-slate-900 border-slate-800">
+                <Card className="bg-card border-border hover:bg-card/80 transition-colors">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-sm font-medium text-slate-200">New Clients</CardTitle>
+                        <CardTitle className="text-sm font-medium text-foreground">{t('newClients')}</CardTitle>
                         <Users className="h-4 w-4 text-blue-400" />
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold text-white">8</div>
-                        <p className="text-xs text-slate-400">+4 this month</p>
+                        <div className="text-2xl font-bold text-foreground">8</div>
+                        <p className="text-xs text-muted-foreground">+4 {t('thisMonth')}</p>
                     </CardContent>
                 </Card>
             </div>

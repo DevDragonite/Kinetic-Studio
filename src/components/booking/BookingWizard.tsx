@@ -7,6 +7,8 @@ import { ServiceStep } from './ServiceStep';
 import { DateTimeStep } from './DateTimeStep';
 import { SummaryStep } from './SummaryStep';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from '@/i18n/routing';
+import { ArrowLeft } from 'lucide-react';
 
 export function BookingWizard() {
     const [step, setStep] = useState(1);
@@ -40,6 +42,11 @@ export function BookingWizard() {
 
     return (
         <div className="w-full max-w-5xl mx-auto p-4">
+            <Link href="/" className="inline-flex items-center text-slate-400 hover:text-primary mb-6 transition-colors">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                {t('backToHome')}
+            </Link>
+
             <Card className="bg-slate-900 border-slate-800 text-white shadow-2xl">
                 <CardHeader>
                     <CardTitle className="text-2xl text-primary text-center">

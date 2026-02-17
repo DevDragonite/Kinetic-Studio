@@ -1,17 +1,269 @@
 {
     "HomePage": {
-        "title": "Kinetic Studio",
-        "subtitle": "Surgical Transparency",
-        "trackPlaceholder": "Enter Plate or VIN",
-        "trackButton": "Track"
+        "title": "Automotive Engineering",
+        "subtitle": "Next Level Performance",
+        "description": "Specialists in Toyota, JAC, and Ford. Computerized diagnostics, preventive maintenance, and light mechanics with the highest quality standards.",
+        "ctaPrimary": "Book Diagnostics",
+        "ctaSecondary": "Check Status",
+        "trackInfo": "Real-Time Tracking",
+        "trackDesc": "Check your vehicle status in our workshop.",
+        "trackRestrictedTitle": "Restricted Access",
+        "trackRestrictedMessage": "To check your vehicle status, you must be a registered client and log in.",
+        "loginButton": "Log In",
+        "trackPlaceholder": "Ex. AB123CD",
+        "trackButton": "Check Status",
+        "transparency": {
+            "title": "Total Transparency Protocol",
+            "desc": "We build trust with evidence. For every replaced part, you receive a photo of the old component versus the new one installed. No secrets, just engineering."
+        },
+        "owner": {
+            "title": "Lead Engineering",
+            "name": "Hely Camargo",
+            "role": "Master Automotive Engineer",
+            "desc": "Certified in Advanced Diagnostics and Electro-mobility. With over 15 years of experience leading high-performance workshops.",
+            "credentials": [
+                "ASE Master Technician",
+                "Toyota Pro Specialist",
+                "Hybrid System Expert"
+            ],
+            "backToMenu": "Back to Menu"
+        }
+    },
+    "Allies": {
+        "title": "Our Commercial Allies",
+        "technicalSpec": "Available Inventory",
+        "bosch": {
+            "desc": "German engineering for vehicle systems.",
+            "specs": [
+                "Spark Plugs",
+                "Sensors",
+                "Fuel Pumps"
+            ]
+        },
+        "motul": {
+            "desc": "High-performance lubricants for demanding engines.",
+            "specs": [
+                "300V Series",
+                "8100 X-cess",
+                "Brake Fluid"
+            ]
+        },
+        "denso": {
+            "desc": "OEM technology for managing ignition and fuel.",
+            "specs": [
+                "Injectors",
+                "Alternators",
+                "Compressors"
+            ]
+        },
+        "kyb": {
+            "desc": "World leader in shock absorbers and hydraulic control.",
+            "specs": [
+                "Shock Absorbers",
+                "Strut Mounts",
+                "Protection Kits"
+            ]
+        }
+    },
+    "Navigation": {
+        "services": "Services",
+        "brands": "Specialty",
+        "track": "Tracking",
+        "contact": "Contact",
+        "book": "Book Appointment",
+        "viewDetails": "View Details",
+        "requestService": "Request Service",
+        "login": "Log In"
+    },
+    "Services": {
+        "title": "Our Services",
+        "subtitle": "Comprehensive solutions for your vehicle care with cutting-edge technology.",
+        "preventive": {
+            "title": "Preventive Maintenance",
+            "desc": "Oil change, filters, and general check-up.",
+            "longDesc": "Our preventive maintenance service includes oil change with premium products (Motul/Toyota), air and oil filter replacement, fluid level check, and a 20-point visual inspection to ensure your vehicle operates in optimal conditions and prevent future failures."
+        },
+        "diagnosis": {
+            "title": "Computerized Diagnostics",
+            "desc": "Advanced sensor and system scanning.",
+            "longDesc": "We use latest-generation scanners compatible with OBD-II protocols and brand-specific tools (Toyota Techstream, JAC Diag) to read error codes, analyze live sensor data, and diagnose engine, transmission, ABS, and airbag faults with millimeter precision."
+        },
+        "brakes": {
+            "title": "Brakes & Suspension",
+            "desc": "Total safety for your driving.",
+            "longDesc": "Complete brake service: disc resurfacing, pad replacement (ceramic/semi-metallic), and fluid bleeding. In suspension, we inspect and replace shock absorbers, bushings, tie rods, and ball joints to restore your vehicle's comfort and stability."
+        },
+        "alignment": {
+            "title": "Alignment & Balancing",
+            "desc": "3D technology for stability.",
+            "longDesc": "High-precision 3D computerized alignment to avoid irregular tire wear and ensure the vehicle maintains its trajectory. Complemented by dynamic balancing to eliminate steering wheel vibrations at high speeds."
+        }
+    },
+    "Brands": {
+        "title": "Certified Specialists",
+        "technicalSpec": "Technical Specialization",
+        "toyota": {
+            "desc": "Certified experts in the leading Japanese brand. Serving Hilux KAVAK/REVO, Fortuner, Corolla, and more.",
+            "specs": [
+                "1GR-FE Engines",
+                "Automatic Transmissions",
+                "Electrical System",
+                "Old Man Emu Suspension"
+            ]
+        },
+        "jac": {
+            "desc": "Specialized service for the modern fleet. We know your T8, JS4, and T6 better than anyone.",
+            "specs": [
+                "Diesel Turbos",
+                "Common Rail Injection",
+                "PDF Sensors",
+                "Electronics"
+            ]
+        },
+        "mitsubishi": {
+            "desc": "Maintenance for 4x4 legends. Montero Sport and Lancer in expert hands.",
+            "specs": [
+                "Super Select Gearboxes",
+                "6G72 Engines",
+                "Front Train",
+                "ABS Brakes"
+            ]
+        },
+        "ford": {
+            "desc": "American power, precision care. Explorer, Super Duty, and Mustang.",
+            "specs": [
+                "Triton/Coyote Engines",
+                "Sync Modules",
+                "Automatic Gearboxes",
+                "Computerized Electronics"
+            ]
+        }
+    },
+    "Testimonials": {
+        "title": "What Our Clients Say",
+        "client1": {
+            "name": "Baelor Targaryen",
+            "car": "Toyota Fortuner",
+            "text": "The maintenance of my Fortuner was impeccable. The attention to detail in the suspension system exceeded my expectations."
+        },
+        "client2": {
+            "name": "Geralt de Rivia",
+            "car": "Mitsubishi Montero Sport",
+            "text": "I needed a precise diagnosis for the 4x4 system. They found the fault other workshops ignored. Real professionals."
+        },
+        "client3": {
+            "name": "Harvey Specter",
+            "car": "JAC Arena",
+            "text": "Efficiency and elegance. My JAC Arena needed urgent brake service and they resolved it in record time without sacrificing quality."
+        }
+    },
+    "Footer": {
+        "description": "Mechanical workshop specializing in advanced diagnostics and preventive maintenance for modern vehicles.",
+        "contact": "Contact",
+        "services": "Services",
+        "follow": "Follow Us",
+        "rights": "All rights reserved."
     },
     "Booking": {
-        "title": "Book Appointment",
+        "title": "Book Your Appointment",
         "steps": {
             "vehicle": "Vehicle",
             "service": "Service",
             "datetime": "Date & Time",
             "summary": "Confirmation"
+        },
+        "backToHome": "Back to Home"
+    },
+    "Login": {
+        "title": "Log In",
+        "subtitle": "Access Kinetic Studio to track your vehicle",
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "you@email.com",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "••••••••",
+        "submitButton": "Log In",
+        "loadingButton": "Logging in...",
+        "noAccount": "Don't have an account?",
+        "bookLink": "Register",
+        "errorTitle": "Access Error",
+        "errorCredentials": "Invalid credentials. Please check your email and password.",
+        "successTitle": "Welcome!",
+        "successMessage": "You have successfully logged in.",
+        "backToHome": "Back to Home"
+    },
+    "Register": {
+        "title": "Create Account",
+        "subtitle": "Join Kinetic Studio",
+        "nameLabel": "Full Name",
+        "namePlaceholder": "Your Name",
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "you@email.com",
+        "passwordLabel": "Password",
+        "passwordPlaceholder": "••••••••",
+        "submitButton": "Sign Up",
+        "loadingButton": "Creating account...",
+        "hasAccount": "Already have an account?",
+        "loginLink": "Log In",
+        "errorTitle": "Registration Error",
+        "successTitle": "Account Created!",
+        "successMessage": "Please check your email to confirm your account.",
+        "backToHome": "Back to Home"
+    },
+    "Admin": {
+        "nav": {
+            "dashboard": "Dashboard",
+            "appointments": "Appointments",
+            "schedule": "Schedule",
+            "inventory": "Inventory",
+            "logout": "Logout"
+        },
+        "dashboard": {
+            "title": "Dashboard",
+            "subtitle": "Overview of shop performance and daily activities.",
+            "totalAppointments": "Total Appointments",
+            "activeJobs": "Active Jobs",
+            "weeklyRevenue": "Weekly Revenue",
+            "newClients": "New Clients",
+            "fromYesterday": "from yesterday",
+            "waiting": "waiting",
+            "inProgress": "in progress",
+            "fromLastWeek": "from last week",
+            "thisMonth": "this month"
+        },
+        "appointments": {
+            "title": "Appointments",
+            "subtitle": "Manage incoming bookings and schedule.",
+            "newAppointment": "New Appointment",
+            "table": {
+                "id": "ID",
+                "customer": "Customer",
+                "vehicle": "Vehicle",
+                "service": "Service",
+                "date": "Date & Time",
+                "status": "Status",
+                "actions": "Actions"
+            },
+            "status": {
+                "confirmed": "Confirmed",
+                "pending": "Pending",
+                "completed": "Completed",
+                "cancelled": "Cancelled"
+            },
+            "actions": {
+                "viewDetails": "View Details",
+                "edit": "Edit Booking",
+                "confirm": "Confirm",
+                "cancel": "Cancel"
+            },
+            "details": {
+                "title": "Appointment Details",
+                "customerInfo": "Customer Information",
+                "vehicleInfo": "Vehicle Information",
+                "serviceInfo": "Service Details",
+                "notes": "Notes",
+                "contact": "Contact",
+                "history": "History"
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,6 +62,7 @@ export default async function RootLayout({
       <body className={`${inter.className} min-h-screen bg-background font-sans antialiased text-foreground`}>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <Toaster />
         </NextIntlClientProvider>
       </body>
     </html>

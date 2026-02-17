@@ -24,14 +24,14 @@ export function HeroBackground() {
 
     return (
         <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-slate-950/90 z-10" /> {/* Overlay for text readability */}
+            <div className="absolute inset-0 bg-background/70 z-10" /> {/* Overlay for text readability */}
 
             {images.map((img, index) => (
                 <motion.div
                     key={index}
                     initial={{ opacity: 0, x: 50 }} // Slide from right slightly
                     animate={{
-                        opacity: index === visibleIndex ? 0.4 : 0,
+                        opacity: index === visibleIndex ? 0.65 : 0,
                         x: index === visibleIndex ? 0 : -50, // Parallax-like movement
                         scale: index === visibleIndex ? 1.05 : 1
                     }}
@@ -42,7 +42,7 @@ export function HeroBackground() {
                         src={img}
                         alt="Background"
                         fill
-                        className="object-cover"
+                        className="object-cover brightness-[1.25]"
                         priority={index === 0}
                     />
                 </motion.div>

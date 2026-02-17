@@ -1,17 +1,269 @@
 {
     "HomePage": {
-        "title": "Kinetic Studio",
-        "subtitle": "Transparência Cirúrgica",
-        "trackPlaceholder": "Digite Placa ou VIN",
-        "trackButton": "Rastrear"
+        "title": "Engenharia Automotiva",
+        "subtitle": "Performance de Próximo Nível",
+        "description": "Especialistas em Toyota, JAC e Ford. Diagnóstico computadorizado, manutenção preventiva e mecânica leve com os mais altos padrões de qualidade.",
+        "ctaPrimary": "Agendar Diagnóstico",
+        "ctaSecondary": "Consultar Status",
+        "trackInfo": "Rastreamento em Tempo Real",
+        "trackDesc": "Verifique o status do seu veículo em nossa oficina.",
+        "trackRestrictedTitle": "Acesso Restrito",
+        "trackRestrictedMessage": "Para consultar o status do seu veículo, você deve ser um cliente registrado e fazer login.",
+        "loginButton": "Entrar",
+        "trackPlaceholder": "Ex. AB123CD",
+        "trackButton": "Consultar",
+        "transparency": {
+            "title": "Protocolo de Transparência Total",
+            "desc": "Construímos confiança com evidências. Para cada peça substituída, você recebe uma foto do componente usado versus o novo instalado. Sem segredos, apenas engenharia."
+        },
+        "owner": {
+            "title": "Engenharia Líder",
+            "name": "Hely Camargo",
+            "role": "Engenheiro Automotivo Master",
+            "desc": "Certificado em Diagnóstico Avançado e Eletromobilidade. Com mais de 15 anos de experiência liderando oficinas de alto desempenho.",
+            "credentials": [
+                "ASE Master Technician",
+                "Especialista Toyota Pro",
+                "Expert em Sistemas Híbridos"
+            ],
+            "backToMenu": "Voltar ao Menu"
+        }
+    },
+    "Allies": {
+        "title": "Nossos Aliados Comerciais",
+        "technicalSpec": "Estoque Disponível",
+        "bosch": {
+            "desc": "Engenharia alemã para sistemas de veículos.",
+            "specs": [
+                "Velas",
+                "Sensores",
+                "Bombas de Combustível"
+            ]
+        },
+        "motul": {
+            "desc": "Lubrificantes de alto desempenho para motores exigentes.",
+            "specs": [
+                "Série 300V",
+                "8100 X-cess",
+                "Fluido de Freio"
+            ]
+        },
+        "denso": {
+            "desc": "Tecnologia OEM para gestão de ignição e combustível.",
+            "specs": [
+                "Injetores",
+                "Alternadores",
+                "Compressores"
+            ]
+        },
+        "kyb": {
+            "desc": "Líder mundial em amortecedores e controle hidráulico.",
+            "specs": [
+                "Amortecedores",
+                "Batentes",
+                "Kits de Proteção"
+            ]
+        }
+    },
+    "Navigation": {
+        "services": "Serviços",
+        "brands": "Especialidade",
+        "track": "Rastreamento",
+        "contact": "Contato",
+        "book": "Agendar Visita",
+        "viewDetails": "Ver Detalhes",
+        "requestService": "Solicitar Serviço",
+        "login": "Entrar"
+    },
+    "Services": {
+        "title": "Nossos Serviços",
+        "subtitle": "Soluções completas para o cuidado do seu veículo com tecnologia de ponta.",
+        "preventive": {
+            "title": "Manutenção Preventiva",
+            "desc": "Troca de óleo, filtros e revisão geral.",
+            "longDesc": "Nosso serviço de manutenção preventiva inclui troca de óleo com produtos premium (Motul/Toyota), substituição de filtros de ar e óleo, verificação de níveis de fluidos e uma inspeção visual de 20 pontos para garantir que seu veículo opere em condições ideais e prevenir falhas futuras."
+        },
+        "diagnosis": {
+            "title": "Diagnóstico Computadorizado",
+            "desc": "Escaneamento avançado de sensores e sistemas.",
+            "longDesc": "Utilizamos scanners de última geração compatíveis com protocolos OBD-II e ferramentas específicas da marca (Toyota Techstream, JAC Diag) para ler códigos de erro, analisar dados ao vivo dos sensores e diagnosticar falhas no motor, transmissão, ABS e airbags com precisão milimétrica."
+        },
+        "brakes": {
+            "title": "Freios e Suspensão",
+            "desc": "Segurança total para sua condução.",
+            "longDesc": "Serviço completo de freios: retificação de discos, troca de pastilhas (cerâmica/semi-metálica) e purga de fluido. Na suspensão, inspecionamos e substituímos amortecedores, buchas, terminais e pivôs para recuperar o conforto e a estabilidade do seu veículo."
+        },
+        "alignment": {
+            "title": "Alinhamento e Balanceamento",
+            "desc": "Tecnologia 3D para estabilidade.",
+            "longDesc": "Alinhamento computadorizado 3D de alta precisão para evitar o desgaste irregular dos pneus e garantir que o veículo mantenha sua trajetória. Complementado com balanceamento dinâmico para eliminar vibrações no volante em altas velocidades."
+        }
+    },
+    "Brands": {
+        "title": "Especialistas Certificados",
+        "technicalSpec": "Especialização Técnica",
+        "toyota": {
+            "desc": "Especialistas certificados na marca líder japonesa. Atendemos Hilux KAVAK/REVO, Fortuner, Corolla e mais.",
+            "specs": [
+                "Motores 1GR-FE",
+                "Transmissões Automáticas",
+                "Sistema Elétrico",
+                "Suspensão Old Man Emu"
+            ]
+        },
+        "jac": {
+            "desc": "Serviço especializado para a frota moderna. Conhecemos seu T8, JS4 e T6 melhor do que ninguém.",
+            "specs": [
+                "Turbos Diesel",
+                "Injeção Common Rail",
+                "Sensores PDF",
+                "Eletrônica"
+            ]
+        },
+        "mitsubishi": {
+            "desc": "Manutenção para lendas do 4x4. Montero Sport e Lancer em mãos experientes.",
+            "specs": [
+                "Caixas Super Select",
+                "Motores 6G72",
+                "Trem Dianteiro",
+                "Freios ABS"
+            ]
+        },
+        "ford": {
+            "desc": "Potência americana, cuidado de precisão. Explorer, Super Duty e Mustang.",
+            "specs": [
+                "Motores Triton/Coyote",
+                "Módulos Sync",
+                "Caixas Automáticas",
+                "Eletrônica Computadorizada"
+            ]
+        }
+    },
+    "Testimonials": {
+        "title": "O Que Dizem Nossos Clientes",
+        "client1": {
+            "name": "Baelor Targaryen",
+            "car": "Toyota Fortuner",
+            "text": "A manutenção da minha Fortuner foi impecável. A atenção aos detalhes no sistema de suspensão superou minhas expectativas."
+        },
+        "client2": {
+            "name": "Geralt de Rivia",
+            "car": "Mitsubishi Montero Sport",
+            "text": "Precisava de um diagnóstico preciso para o sistema 4x4. Encontraram a falha que outras oficinas ignoraram. Profissionais reais."
+        },
+        "client3": {
+            "name": "Harvey Specter",
+            "car": "JAC Arena",
+            "text": "Eficiência e elegância. Minha JAC Arena precisava de serviço de freios urgente e resolveram em tempo recorde sem sacrificar a qualidade."
+        }
+    },
+    "Footer": {
+        "description": "Oficina mecânica especializada em diagnósticos avançados e manutenção preventiva para veículos modernos.",
+        "contact": "Contato",
+        "services": "Serviços",
+        "follow": "Siga-nos",
+        "rights": "Todos os direitos reservados."
     },
     "Booking": {
-        "title": "Agendar Consulta",
+        "title": "Agende seu Horário",
         "steps": {
             "vehicle": "Veículo",
             "service": "Serviço",
             "datetime": "Data e Hora",
             "summary": "Confirmação"
+        },
+        "backToHome": "Voltar ao Início"
+    },
+    "Login": {
+        "title": "Entrar",
+        "subtitle": "Acesse o Kinetic Studio para rastrear seu veículo",
+        "emailLabel": "Endereço de Email",
+        "emailPlaceholder": "voce@email.com",
+        "passwordLabel": "Senha",
+        "passwordPlaceholder": "••••••••",
+        "submitButton": "Entrar",
+        "loadingButton": "Entrando...",
+        "noAccount": "Não tem uma conta?",
+        "bookLink": "Cadastre-se",
+        "errorTitle": "Erro de Acesso",
+        "errorCredentials": "Credenciais inválidas. Verifique seu email e senha.",
+        "successTitle": "Bem-vindo!",
+        "successMessage": "Você entrou com sucesso.",
+        "backToHome": "Voltar ao Início"
+    },
+    "Register": {
+        "title": "Criar Conta",
+        "subtitle": "Junte-se ao Kinetic Studio",
+        "nameLabel": "Nome Completo",
+        "namePlaceholder": "Seu Nome",
+        "emailLabel": "Endereço de Email",
+        "emailPlaceholder": "voce@email.com",
+        "passwordLabel": "Senha",
+        "passwordPlaceholder": "••••••••",
+        "submitButton": "Cadastrar",
+        "loadingButton": "Criando conta...",
+        "hasAccount": "Já tem uma conta?",
+        "loginLink": "Entrar",
+        "errorTitle": "Erro de Cadastro",
+        "successTitle": "Conta Criada!",
+        "successMessage": "Verifique seu email para confirmar sua conta.",
+        "backToHome": "Voltar ao Início"
+    },
+    "Admin": {
+        "nav": {
+            "dashboard": "Painel de Controle",
+            "appointments": "Agendamentos",
+            "schedule": "Cronograma",
+            "inventory": "Estoque",
+            "logout": "Sair"
+        },
+        "dashboard": {
+            "title": "Painel de Controle",
+            "subtitle": "Visão geral do desempenho da oficina e atividades diárias.",
+            "totalAppointments": "Total de Agendamentos",
+            "activeJobs": "Trabalhos Ativos",
+            "weeklyRevenue": "Receita Semanal",
+            "newClients": "Novos Clientes",
+            "fromYesterday": "desde ontem",
+            "waiting": "em espera",
+            "inProgress": "em andamento",
+            "fromLastWeek": "desde a semana passada",
+            "thisMonth": "este mês"
+        },
+        "appointments": {
+            "title": "Agendamentos",
+            "subtitle": "Gerencie as reservas recebidas e a agenda.",
+            "newAppointment": "Novo Agendamento",
+            "table": {
+                "id": "ID",
+                "customer": "Cliente",
+                "vehicle": "Veículo",
+                "service": "Serviço",
+                "date": "Data e Hora",
+                "status": "Status",
+                "actions": "Ações"
+            },
+            "status": {
+                "confirmed": "Confirmado",
+                "pending": "Pendente",
+                "completed": "Concluído",
+                "cancelled": "Cancelado"
+            },
+            "actions": {
+                "viewDetails": "Ver Detalhes",
+                "edit": "Editar Reserva",
+                "confirm": "Confirmar",
+                "cancel": "Cancelar"
+            },
+            "details": {
+                "title": "Detalhes do Agendamento",
+                "customerInfo": "Informações do Cliente",
+                "vehicleInfo": "Informações do Veículo",
+                "serviceInfo": "Detalhes do Serviço",
+                "notes": "Notas",
+                "contact": "Contato",
+                "history": "Histórico"
+            }
         }
     }
 }
