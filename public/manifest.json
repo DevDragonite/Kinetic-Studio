@@ -1,0 +1,22 @@
+{
+    "name": "Kinetic Studio",
+    "short_name": "Kinetic",
+    "description": "Sistema de Gestión de Taller Mecánico Premium",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#020617",
+    "theme_color": "#ff4d00",
+    "icons": [
+        {
+            "src": "/web-app-manifest-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/web-app-manifest-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "portrait"
+}

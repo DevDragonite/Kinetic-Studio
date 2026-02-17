@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
@@ -10,7 +10,28 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Kinetic Studio",
-  description: "Advanced Automotive Management",
+  description: "Advanced Automotive Management - Sistema Premium de Taller Mecánico en Caracas",
+  manifest: "/manifest.json",
+  keywords: ["Taller Mecánico", "Caracas", "Toyota", "JAC", "Frenos", "Diagnóstico", "Automotriz"],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Kinetic",
+  },
+  openGraph: {
+    title: "Kinetic Studio",
+    description: "Gestión Automotriz de Clase Mundial en Caracas",
+    locale: "es_VE",
+    type: "website",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#020617",
 };
 
 export function generateStaticParams() {
